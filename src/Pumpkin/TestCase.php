@@ -54,4 +54,14 @@ abstract class TestCase extends \PHPUnit_Extensions_Database_TestCase
             )
         );
     }
+
+    /**
+     * {@inheritDoc}
+     *
+     * @return \PHPUnit_Extensions_Database_DataSet_IDataSet
+     */
+    protected function getDataSet()
+    {
+        return new \PHPUnit_Extensions_Database_DataSet_DefaultDataSet();
+    }
 }
