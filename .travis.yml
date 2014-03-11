@@ -6,5 +6,6 @@ php:
 
 before_script:
   - composer install
+  - "mysql -e 'create database pumpkin;'"
 
 script: phpunit
