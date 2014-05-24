@@ -40,5 +40,27 @@ class TestCaseTest extends \PHPUnit_Framework_TestCase
             $result->getReflectedTestMethod()->getName(true)
         );
     }
+
+    /**
+     * Tests the result of getDataSet
+     */
+    public function testGetDataSet()
+    {
+        $foo = new Foo1();
+        $this->assertInstanceOf('PHPUnit_Extensions_Database_DataSet_IDataSet', $foo->getDataSet());
+        $this->assertSame(array('dbName.tableName2', 'dbName.tableName3'), $foo->getDataSet()->getTableNames());
+    }
+
+    /**
+     * Tests the cache of getDataSet
+     */
+    public function testGetDataSetCache()
+    {
+        $foo1 = new Foo1();
+        $result1 = $foo1->getDataSet();
+        $this->assertSame($result1, $foo1->getDataSet());
+
+        $foo2 = new Foo2();
+        $this->assertNotSame($result1, $foo2->getDataSet());
+    }
 }
- 

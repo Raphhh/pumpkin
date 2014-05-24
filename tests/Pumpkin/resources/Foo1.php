@@ -24,8 +24,17 @@ class Foo1 extends TestCase
         return 'currentMethod';
     }
 
+    /**
+     * @db dbName.tableName2
+     * @db dbName.tableName3
+     */
     public function currentMethod()
     {
 
+    }
+
+    public function getDataSet()
+    {
+        return parent::getDataSet();
     }
 }

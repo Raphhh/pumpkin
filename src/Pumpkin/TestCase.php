@@ -19,6 +19,11 @@ abstract class TestCase extends \PHPUnit_Extensions_Database_TestCase
     private static $connection;
 
     /**
+     * @var \PHPUnit_Extensions_Database_DataSet_IDataSet
+     */
+    private $dataSet;
+
+    /**
      * {@inheritDoc}
      *
      * @return \PHPUnit_Extensions_Database_DB_DefaultDatabaseConnection
@@ -64,7 +69,30 @@ abstract class TestCase extends \PHPUnit_Extensions_Database_TestCase
      */
     protected function getDataSet()
     {
-        return new \PHPUnit_Extensions_Database_DataSet_DefaultDataSet(); //todo
+        if (null === $this->dataSet) {
+            $this->setDataSet($this->buildDataSet());
+        }
+        return $this->dataSet;
+    }
+
+    /**
+     * @param \PHPUnit_Extensions_Database_DataSet_IDataSet $dataSet
+     */
+    private function setDataSet(\PHPUnit_Extensions_Database_DataSet_IDataSet $dataSet)
+    {
+        $this->dataSet = $dataSet;
+    }
+
+    /**
+     * @return \PHPUnit_Extensions_Database_DataSet_DefaultDataSet
+     */
+    private function buildDataSet()
+    {
+        $result = new \PHPUnit_Extensions_Database_DataSet_DefaultDataSet();
+        foreach ($this->getTest()->getTables() as $table) {
+            $result->addTable($table->toPhpUnitTable());
+        }
+        return $result;
     }
 
     /**
