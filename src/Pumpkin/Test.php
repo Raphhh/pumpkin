@@ -1,6 +1,7 @@
 <?php
 namespace Pumpkin;
 
+use Pumpkin\Table\Table;
 use TRex\Reflection\MethodReflection;
 
 /**
@@ -36,6 +37,30 @@ class Test
     public function getReflectedTestMethod()
     {
         return $this->reflectedTestMethod;
+    }
+
+    /**
+     * Returns the list of database tables associated with the current test.
+     *
+     * @return Table[]
+     */
+    public function getTables()
+    {
+        $result = array();
+        foreach ($this->getReflectedTestMethod()->getAnnotations()->get('db') as $tableFullName) {
+            $result[$tableFullName] = $this->getTable($tableFullName);
+        }
+        return $result;
+    }
+
+    /**
+     * @param string $tableFullName
+     * @return Table
+     */
+    private function getTable($tableFullName)
+    {
+        list($dataBaseName, $tableName) = explode('.', $tableFullName);
+        return new Table($this, $dataBaseName, $tableName);
     }
 
     /**
