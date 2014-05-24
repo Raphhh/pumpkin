@@ -7,20 +7,20 @@
     "homepage": "http://labs.raphaellefebvre.be/pumpkin",
     "license": "MIT",
     "authors": [
-		{
+        {
             "name": "Raphaël Lefebvre",
             "email": "raphael@raphaellefebvre.be"
-		}
-	],
-	"autoload": {
-		"psr-0": {
-			"Pumpkin": ["src/", "tests/"]
-		}
-	},
-	"require": {
+        }
+    ],
+    "autoload": {
+        "psr-0": {
+            "Pumpkin": ["src/", "tests/"]
+        }
+    },
+    "require": {
         "php": ">=5.3",
-        "phpunit/phpunit": "3.7.*",
-		"phpunit/dbUnit": "1.3.*",
-		"raphhh/trex": "dev-master"
-	}
+        "phpunit/phpunit": "*",
+        "phpunit/dbUnit": "*",
+        "raphhh/trex": "*"
+    }
 }
