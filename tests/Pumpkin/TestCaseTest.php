@@ -27,5 +27,18 @@ class TestCaseTest extends \PHPUnit_Framework_TestCase
         $foo2 = new Foo2();
         $this->assertSame($connection1, $foo2->getConnection());
     }
+
+    /**
+     * Tests whether the Reflected Test is the current test.
+     */
+    public function testGetTest()
+    {
+        $foo = new Foo1();
+        $result = $foo->getTest();
+        $this->assertSame(
+            'Pumpkin\resources\Foo1::currentMethod',
+            $result->getReflectedTestMethod()->getName(true)
+        );
+    }
 }
  

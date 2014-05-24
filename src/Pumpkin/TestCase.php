@@ -1,6 +1,8 @@
 <?php
 namespace Pumpkin;
 
+use TRex\Reflection\MethodReflection;
+
 /**
  * Class TestCase
  * @package Pumpkin
@@ -63,5 +65,15 @@ abstract class TestCase extends \PHPUnit_Extensions_Database_TestCase
     protected function getDataSet()
     {
         return new \PHPUnit_Extensions_Database_DataSet_DefaultDataSet(); //todo
+    }
+
+    /**
+     * Returns the current test.
+     *
+     * @return Test
+     */
+    protected function getTest()
+    {
+        return new Test(new MethodReflection($this, $this->getName(false)));
     }
 }
