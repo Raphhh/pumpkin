@@ -17,15 +17,19 @@ class TestCaseTest extends \PHPUnit_Framework_TestCase
      */
     public function testGetConnection()
     {
+        try {
+            $foo1 = new Foo1();
+            $connection1 = $foo1->getConnection();
 
-        $foo1 = new Foo1();
-        $connection1 = $foo1->getConnection();
+            $this->assertInstanceOf('\PHPUnit_Extensions_Database_DB_DefaultDatabaseConnection', $connection1);
+            $this->assertSame($connection1, $foo1->getConnection());
 
-        $this->assertInstanceOf('\PHPUnit_Extensions_Database_DB_DefaultDatabaseConnection', $connection1);
-        $this->assertSame($connection1, $foo1->getConnection());
+            $foo2 = new Foo2();
+            $this->assertSame($connection1, $foo2->getConnection());
 
-        $foo2 = new Foo2();
-        $this->assertSame($connection1, $foo2->getConnection());
+        } catch (\Exception $e) {
+            $this->markTestSkipped($e->getMessage());
+        }
     }
 
     /**
