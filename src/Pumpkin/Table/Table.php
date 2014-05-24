@@ -72,6 +72,27 @@ class Table
     }
 
     /**
+     * @return \PHPUnit_Extensions_Database_DataSet_ITable
+     */
+    public function toPhpUnitTable()
+    {
+        $table = new TableConverter();
+        return $table->getPhpUnitTable(
+            $this->getFullName(),
+            $this->getDataPath()
+        );
+    }
+
+    /**
+     * @return string
+     */
+    private function getDataPath()
+    {
+        $pathFinder = new PathFinder($this);
+        return $pathFinder->findDataPath(TableConverter::getSupportedFileExtensions());
+    }
+
+    /**
      * @param string $name
      */
     private function setName($name)
