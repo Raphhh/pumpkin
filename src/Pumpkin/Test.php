@@ -1,6 +1,7 @@
 <?php
 namespace Pumpkin;
 
+use Pumpkin\Mock\MockBuilder;
 use Pumpkin\Table\Table;
 use TRex\Reflection\MethodReflection;
 
@@ -37,6 +38,18 @@ class Test
     public function getReflectedTestMethod()
     {
         return $this->reflectedTestMethod;
+    }
+
+    /**
+     * Returns the list of mock objects associated with the current test.
+     *
+     * @param array $constructorArgs
+     * @return \TRex\Core\Objects
+     */
+    public function getMocks(array $constructorArgs = array())
+    {
+        $mockBuilder = new MockBuilder($this);
+        return $mockBuilder->getMocks($constructorArgs);
     }
 
     /**
