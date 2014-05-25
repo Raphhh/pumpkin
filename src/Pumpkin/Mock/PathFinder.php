@@ -1,31 +1,15 @@
 <?php
 namespace Pumpkin\Mock;
 
-use Pumpkin\Test;
+use Pumpkin\TestHelper;
 
 /**
  * Class PathFinder
  * @package Pumpkin\Mock
  * @author Raphaël Lefebvre <raphael@raphaellefebvre.be>
  */
-class PathFinder
+class PathFinder extends TestHelper
 {
-
-    /**
-     * @var Test
-     */
-    private $test;
-
-    /**
-     * Constructor.
-     *
-     * @param Test $test
-     */
-    public function __construct(Test $test)
-    {
-        $this->setTest($test);
-    }
-
     /**
      * @return string
      */
@@ -55,25 +39,5 @@ class PathFinder
     {
         $explodedNames = explode('\\', $fullName);
         return array_pop($explodedNames);
-    }
-
-    /**
-     * Setter of $test
-     *
-     * @param Test $test
-     */
-    private function setTest(Test $test)
-    {
-        $this->test = $test;
-    }
-
-    /**
-     * Getter of $test
-     *
-     * @return \Pumpkin\Test
-     */
-    public function getTest()
-    {
-        return $this->test;
     }
 }
