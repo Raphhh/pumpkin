@@ -18,7 +18,7 @@ class PathFinderTest extends \PHPUnit_Framework_TestCase
     public function testGetTestDirPath()
     {
         $pathFinder = new PathFinder($this->getTable('tableName'));
-        $this->assertSame(dirname(__FILE__), $pathFinder->getTestDirPath());
+        $this->assertSame(__DIR__, $pathFinder->getTestDirPath());
     }
 
     /**
@@ -28,7 +28,7 @@ class PathFinderTest extends \PHPUnit_Framework_TestCase
     {
         $pathFinder = new PathFinder($this->getTable('tableName'));
         $this->assertSame(
-            realpath(dirname(__FILE__) . '/resources/databases/dbName/data/tableName.csv'),
+            realpath(__DIR__ . '/resources/databases/dbName/data/tableName.csv'),
             $pathFinder->findDataPath(array('csv'))
         );
     }
@@ -50,7 +50,7 @@ class PathFinderTest extends \PHPUnit_Framework_TestCase
     {
         $pathFinder = new PathFinder($this->getTable('tableName2'));
         $this->assertSame(
-            realpath(dirname(__FILE__) . '/../resources/databases/dbName/data/tableName2.csv'),
+            realpath(__DIR__ . '/../resources/databases/dbName/data/tableName2.csv'),
             $pathFinder->findDataPath(array('csv'))
         );
     }
