@@ -13,15 +13,6 @@ class PathFinderTest extends \PHPUnit_Framework_TestCase
 {
 
     /**
-     * Tests the recovery of the test dir path.
-     */
-    public function testGetTestDirPath()
-    {
-        $pathFinder = new PathFinder($this->getTable('tableName'));
-        $this->assertSame(__DIR__, $pathFinder->getTestDirPath());
-    }
-
-    /**
      * Tests when there is a file.
      */
     public function testFindDataPathWithFileFounded()

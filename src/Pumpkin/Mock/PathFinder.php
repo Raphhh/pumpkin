@@ -29,51 +29,10 @@ class PathFinder
     /**
      * @return string
      */
-    public function getTestDirPath()
-    {
-        return dirname($this->getTest()->getReflectedTestMethod()->getReflector()->getFileName());
-    }
-
-    /**
-     * @return string
-     * @throws \RuntimeException
-     */
     public function findMocksPath()
     {
-        $level = 0;
-        while ($dirPath = realpath($this->resolveDirPathByLevel($level++))) {
-            $filePath = $dirPath . $this->getFileSubPath();
-            $result = $this->findFilePath($filePath, array('php'));
-            if ($result) {
-                return $result;
-            }
-        }
-        throw new \RuntimeException(
-            sprintf('Not file found in "%s"', $this->resolveDirPathByLevel(0) . $this->getFileSubPath() . '.*')
-        );
-    }
-
-    /**
-     * @param $level
-     * @return string
-     */
-    private function resolveDirPathByLevel($level)
-    {
-        return $this->getTestDirPath()
-        . DIRECTORY_SEPARATOR
-        . implode(DIRECTORY_SEPARATOR, $this->getLevelPaths($level));
-    }
-
-    /**
-     * @param $level
-     * @return array
-     */
-    private function getLevelPaths($level)
-    {
-        if ($level) {
-            return array_fill(0, $level, '..');
-        }
-        return array();
+        $pathFinder = new \Pumpkin\PathFinder($this->getTest());
+        return $pathFinder->findPath($this->getFileSubPath(), array('php'));
     }
 
     /**
@@ -88,21 +47,14 @@ class PathFinder
         );
     }
 
+    /**
+     * @param $fullName
+     * @return mixed
+     */
     private function extractClassName($fullName)
     {
         $explodedNames = explode('\\', $fullName);
         return array_pop($explodedNames);
-    }
-
-    private function findFilePath($filePath, array $supportedExtensions)
-    {
-        foreach ($supportedExtensions as $ext) {
-            $path = realpath($filePath . '.' . $ext);
-            if ($path && is_readable($path)) {
-                return $path;
-            }
-        }
-        return '';
     }
 
     /**
