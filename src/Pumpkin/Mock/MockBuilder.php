@@ -3,6 +3,7 @@ namespace Pumpkin\Mock;
 
 use Pumpkin\TestHelper;
 use TRex\Core\Objects;
+use TRex\Parser\Analyzer;
 
 /**
  * Class MocksBuilder
@@ -30,7 +31,7 @@ class MockBuilder extends TestHelper
      */
     private function getClassReflections()
     {
-        $analyzer = new Trex\Parser\Analyser();
+        $analyzer = new Analyzer();
         return $analyzer->getClassReflections($this->getPath());
     }
 
