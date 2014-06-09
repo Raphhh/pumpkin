@@ -1,8 +1,7 @@
 <?php
 namespace Pumpkin\Database;
 
-use Pumpkin\Test\Test;
-use TRex\Reflection\MethodReflection;
+use Pumpkin\Test\TestCase as TestTrait;
 
 /**
  * Class TestCase
@@ -11,6 +10,8 @@ use TRex\Reflection\MethodReflection;
  */
 abstract class TestCase extends \PHPUnit_Extensions_Database_TestCase
 {
+
+    use TestTrait;
 
     /**
      * main db connection.
@@ -94,26 +95,5 @@ abstract class TestCase extends \PHPUnit_Extensions_Database_TestCase
             $result->addTable($table->toPhpUnitTable());
         }
         return $result;
-    }
-
-    /**
-     * Returns the current test.
-     *
-     * @return Test
-     */
-    protected function getTest()
-    {
-        return new Test(new MethodReflection($this, $this->getName(false)));
-    }
-
-    /**
-     * Returns the mocks associated with the current test.
-     *
-     * @param array $constructorArgs
-     * @return \TRex\Core\Objects
-     */
-    protected function getMocks(array $constructorArgs = array())
-    {
-        return $this->getTest()->getMocks($constructorArgs);
     }
 }
