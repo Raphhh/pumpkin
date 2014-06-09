@@ -34,7 +34,7 @@ class PathFinder
      */
     public function findDataPath(array $supportedExtensions)
     {
-        $pathFinder = new \Pumpkin\PathFinder($this->getTable()->getTest());
+        $pathFinder = new \Pumpkin\Test\PathFinder($this->getTable()->getTest());
         return $pathFinder->findPath($this->getFileSubPath(), $supportedExtensions);
     }
 

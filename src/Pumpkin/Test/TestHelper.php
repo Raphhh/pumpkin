@@ -1,5 +1,5 @@
 <?php
-namespace Pumpkin;
+namespace Pumpkin\Test;
 
 /**
  * Class TestHelper
@@ -26,7 +26,7 @@ abstract class TestHelper
     /**
      * Getter of $test
      *
-     * @return \Pumpkin\Test
+     * @return \Pumpkin\Test\Test
      */
     public function getTest()
     {

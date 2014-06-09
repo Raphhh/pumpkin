@@ -1,7 +1,7 @@
 <?php
 namespace Pumpkin\Mock;
 
-use Pumpkin\TestHelper;
+use Pumpkin\Test\TestHelper;
 
 /**
  * Class PathFinder
@@ -15,7 +15,7 @@ class PathFinder extends TestHelper
      */
     public function findMocksPath()
     {
-        $pathFinder = new \Pumpkin\PathFinder($this->getTest());
+        $pathFinder = new \Pumpkin\Test\PathFinder($this->getTest());
         return $pathFinder->findPath($this->getFileSubPath(), array('php'));
     }
 

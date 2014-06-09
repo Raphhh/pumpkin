@@ -1,7 +1,7 @@
 <?php
 namespace Pumpkin\Mock;
 
-use Pumpkin\Test;
+use Pumpkin\Test\Test;
 use TRex\Reflection\MethodReflection;
 
 /**

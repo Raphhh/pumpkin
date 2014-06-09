@@ -1,5 +1,5 @@
 <?php
-namespace Pumpkin;
+namespace Pumpkin\Test;
 
 use Pumpkin\Database\Table;
 use Pumpkin\Mock\MockBuilder;

@@ -1,5 +1,5 @@
 <?php
-namespace Pumpkin;
+namespace Pumpkin\Test;
 
 /**
  * Class PathFinder

@@ -1,7 +1,7 @@
 <?php
 namespace Pumpkin\Mock;
 
-use Pumpkin\TestHelper;
+use Pumpkin\Test\TestHelper;
 use TRex\Core\Objects;
 use TRex\Parser\Analyzer;
 

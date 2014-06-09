@@ -1,7 +1,7 @@
 <?php
 namespace Pumpkin\Database;
 
-use Pumpkin\Test;
+use Pumpkin\Test\Test;
 
 /**
  * Class Table

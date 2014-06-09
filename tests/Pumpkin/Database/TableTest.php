@@ -1,7 +1,7 @@
 <?php
 namespace Pumpkin\Database;
 
-use Pumpkin\Test;
+use Pumpkin\Test\Test;
 use TRex\Reflection\MethodReflection;
 
 /**
@@ -22,11 +22,11 @@ class TableTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @return \Pumpkin\Test
+     * @return \Pumpkin\Test\Test
      */
     private function getTestMock()
     {
-        return $this->getMockBuilder('Pumpkin\Test')
+        return $this->getMockBuilder('Pumpkin\Test\Test')
             ->disableOriginalConstructor()
             ->getMock();
     }
