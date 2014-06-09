@@ -67,4 +67,10 @@ class TestCaseTest extends \PHPUnit_Framework_TestCase
         $foo2 = new Foo2();
         $this->assertNotSame($result1, $foo2->getDataSet());
     }
+
+    public function testGetMocks()
+    {
+        $foo1 = new Foo1();
+        $this->assertInstanceOf('\TRex\Core\Objects', $foo1->getMocks());
+    }
 }

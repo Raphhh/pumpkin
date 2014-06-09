@@ -37,4 +37,9 @@ class Foo1 extends TestCase
     {
         return parent::getDataSet();
     }
+
+    public function getMocks(array $constructorArgs = array())
+    {
+        return parent::getMocks();
+    }
 }
