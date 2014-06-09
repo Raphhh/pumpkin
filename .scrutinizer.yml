@@ -51,7 +51,7 @@ tools:
             standard: PSR2
             sniffs: { psr1: { classes: { class_declaration_sniff: true } }, psr2: { classes: { property_declaration_sniff: true, class_declaration_sniff: true }, methods: { method_declaration_sniff: true }, namespaces: { namespace_declaration_sniff: true, use_declaration_sniff: true }, files: { end_file_newline_sniff: true }, control_structures: { control_structure_spacing_sniff: true, switch_declaration_sniff: true, else_if_declaration_sniff: true } }, generic: { code_analysis: { unused_function_parameter_sniff: true, unconditional_if_statement_sniff: true, for_loop_should_be_while_loop_sniff: true }, classes: { duplicate_class_name_sniff: true }, php: { disallow_short_open_tag_sniff: true, no_silenced_errors_sniff: true, lower_case_constant_sniff: true }, commenting: { fixme_sniff: true, todo_sniff: true }, control_structures: { inline_control_structure_sniff: true } } }
     sensiolabs_security_checker: true
-    php_code_coverage: true
+    external_code_coverage: true
     php_cpd:
         min_lines: '3'
         min_tokens: '50'
