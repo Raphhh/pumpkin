@@ -21,6 +21,6 @@
         "php": ">=5.4",
         "phpunit/phpunit": "*",
         "phpunit/dbUnit": "*",
-        "raphhh/trex": "*"
+        "raphhh/trex": "dev-master"
     }
 }
