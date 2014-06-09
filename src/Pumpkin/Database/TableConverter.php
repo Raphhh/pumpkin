@@ -1,5 +1,5 @@
 <?php
-namespace Pumpkin\Table;
+namespace Pumpkin\Database;
 
 /**
  * Class TableConverter

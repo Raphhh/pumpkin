@@ -1,8 +1,8 @@
 <?php
 namespace Pumpkin;
 
+use Pumpkin\Database\Table;
 use Pumpkin\Mock\MockBuilder;
-use Pumpkin\Table\Table;
 use TRex\Reflection\MethodReflection;
 
 /**

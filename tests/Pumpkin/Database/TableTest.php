@@ -1,5 +1,5 @@
 <?php
-namespace Pumpkin\Table;
+namespace Pumpkin\Database;
 
 use Pumpkin\Test;
 use TRex\Reflection\MethodReflection;
