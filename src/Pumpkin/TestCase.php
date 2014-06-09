@@ -104,4 +104,15 @@ abstract class TestCase extends \PHPUnit_Extensions_Database_TestCase
     {
         return new Test(new MethodReflection($this, $this->getName(false)));
     }
+
+    /**
+     * Returns the mocks associated with the current test.
+     *
+     * @param array $constructorArgs
+     * @return \TRex\Core\Objects
+     */
+    protected function getMocks(array $constructorArgs = array())
+    {
+        return $this->getTest()->getMocks($constructorArgs);
+    }
 }
