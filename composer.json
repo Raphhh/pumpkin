@@ -1,7 +1,7 @@
 {
     "name": "raphhh/pumpkin",
     "description": "A helper for PHPUnit",
-    "minimum-stability": "dev",
+    "minimum-stability": "stable",
     "type": "library",
     "keywords": ["pumpkin", "PHPUnit"],
     "homepage": "http://labs.raphaellefebvre.be/pumpkin",
