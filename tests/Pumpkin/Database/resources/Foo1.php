@@ -1,9 +1,9 @@
 <?php
-namespace Pumpkin\resources;
+namespace Pumpkin\Database\resources;
 
-use Pumpkin\TestCase;
+use Pumpkin\Database\TestCase;
 
-class Foo2 extends TestCase
+class Foo1 extends TestCase
 {
 
     public function getConnection()
@@ -38,4 +38,3 @@ class Foo2 extends TestCase
         return parent::getDataSet();
     }
 }
- 

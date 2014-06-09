@@ -1,8 +1,8 @@
 <?php
-namespace Pumpkin;
+namespace Pumpkin\Database;
 
-use Pumpkin\resources\Foo1;
-use Pumpkin\resources\Foo2;
+use Pumpkin\Database\resources\Foo1;
+use Pumpkin\Database\resources\Foo2;
 
 /**
  * Class TestCaseTest
@@ -40,7 +40,7 @@ class TestCaseTest extends \PHPUnit_Framework_TestCase
         $foo = new Foo1();
         $result = $foo->getTest();
         $this->assertSame(
-            'Pumpkin\resources\Foo1::currentMethod',
+            'Pumpkin\Database\resources\Foo1::currentMethod',
             $result->getReflectedTestMethod()->getName(true)
         );
     }
