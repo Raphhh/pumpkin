@@ -50,7 +50,7 @@ class PathFinder extends TestHelper
 
     /**
      * @param int $level
-     * @return array
+     * @return string[]
      */
     private function getLevelPaths($level)
     {
