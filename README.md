@@ -37,16 +37,16 @@ For example
 class FooTest extends Pumpkin\TestCase{
 
     function testA(){
-        $this->getTest()->getName(); //FooTest::testA
+        $this->getTest()->getReflectedTestMethod()->getName(); //FooTest::testA
     }
 
     function testB(){
-        $this->getTest()->getName(); //FooTest::testB
+        $this->getTest()->getReflectedTestMethod()->getName(); //FooTest::testB
     }
 }
 ```
 
-With this object you can reflected the method of the executed test, retrieve annotations, ... anything!
+With this method you can reflected the method of the executed test, retrieve annotations, ... anything!
 
 
 ### Get mocks of the current test
@@ -58,7 +58,11 @@ The file is located in the following path:
 /resources/mocks/{ClassTestName}/{methodName}.php
 ```
 
+This path can start from the test directory or from a parent one.
+
 You can declare as many mocks as you want in this file.
+
+
 
 For example
 
@@ -118,7 +122,7 @@ The data are stored in a file with the following path:
 
 Currently, Pumpkin support only csv files, but it can be evolved in future.
 
-Your data can be specific for the current test, or be common with several tests. Everything is determined by the data file path. If you want specific data, you have to locate the data file in the directory of your test. If you want common data, you hace to locate the data file in a common directory of your tests.
+Your data can be specific for the current test, or be common with several tests. Everything is determined by the data file path. If you want specific data, you have to locate the data file in the directory of your test. If you want common data, you have to locate the data file in a common directory of your tests.
 
 
 #### The database config
