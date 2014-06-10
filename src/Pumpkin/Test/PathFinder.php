@@ -62,7 +62,7 @@ class PathFinder extends TestHelper
 
     /**
      * @param string $filePath
-     * @param array $supportedExtensions
+     * @param string[] $supportedExtensions
      * @return string
      */
     private function findFilePath($filePath, array $supportedExtensions)
