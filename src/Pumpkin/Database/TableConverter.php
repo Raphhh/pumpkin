@@ -41,7 +41,7 @@ class TableConverter
     /**
      * @param string $tableName
      * @param string $path
-     * @return \PHPUnit_Extensions_Database_DataSet_IDataSet
+     * @return \PHPUnit_Extensions_Database_DataSet_ITable
      */
     private function getDataSetCsv($tableName, $path)
     {
