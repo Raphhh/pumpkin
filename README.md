@@ -6,7 +6,7 @@
 
 ## What is Pumpkin?
 
-Pumpkin a helper to organize the storage of your mocks with PHPUnit. It helps you to give mocks objects and database resources when you execute a test.
+Pumpkin helps you to organize the storage of your mocks for PHPUnit. It gives mocks objects and database resources when you execute a test.
 
 
 ## How to start?

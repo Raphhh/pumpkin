@@ -33,11 +33,11 @@ class PathFinder extends TestHelper
 
     /**
      * @param $fullName
-     * @return mixed
+     * @return string
      */
     private function extractClassName($fullName)
     {
         $explodedNames = explode('\\', $fullName);
-        return array_pop($explodedNames);
+        return (string)array_pop($explodedNames);
     }
 }
