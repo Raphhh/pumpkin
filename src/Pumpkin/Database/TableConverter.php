@@ -33,7 +33,7 @@ class TableConverter
     {
         switch (pathinfo($path, PATHINFO_EXTENSION)) {
             case 'csv':
-                return $this->getDataSetCsv($tableFullName, $path);
+                return $this->getCsvDataSetTable($tableFullName, $path);
         }
         throw new \InvalidArgumentException(sprintf('Not a supported file extension for "%s"', $path));
     }
@@ -43,7 +43,7 @@ class TableConverter
      * @param string $path
      * @return \PHPUnit_Extensions_Database_DataSet_ITable
      */
-    private function getDataSetCsv($tableName, $path)
+    private function getCsvDataSetTable($tableName, $path)
     {
         $dataSet = new \PHPUnit_Extensions_Database_DataSet_CsvDataSet();
         $dataSet->addTable($tableName, $path);
