@@ -4,6 +4,11 @@ namespace Pumpkin\Mock;
 use Pumpkin\Test\Test;
 use TRex\Reflection\MethodReflection;
 
+/**
+ * Class PathFinderTest
+ * @package Pumpkin\Mock
+ * @author Raphaël Lefebvre <raphael@raphaellefebvre.be>
+ */
 class PathFinderTest extends \PHPUnit_Framework_TestCase
 {
 
