@@ -16,5 +16,12 @@ class MockBuilderTest extends \PHPUnit_Framework_TestCase
         $mockBuilder = new MockBuilder(new Test(new MethodReflection(__CLASS__, __FUNCTION__)));
         $this->assertInstanceOf('TRex\core\Objects', $mockBuilder->getMocks());
     }
+
+    public function testGetMocksWithUndefinedFile()
+    {
+        $mockBuilder = new MockBuilder(new Test(new MethodReflection(__CLASS__, __FUNCTION__)));
+        $this->setExpectedException('RuntimeException', 'File not found');
+        $this->assertInstanceOf('TRex\core\Objects', $mockBuilder->getMocks());
+    }
 }
  
