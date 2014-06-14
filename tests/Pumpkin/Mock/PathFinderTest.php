@@ -28,8 +28,7 @@ class PathFinderTest extends \PHPUnit_Framework_TestCase
     public function testFindMocksPathWithoutFileFounded()
     {
         $pathFinder = new PathFinder(new Test(new MethodReflection(__CLASS__, __FUNCTION__)));
-        $this->setExpectedException('RuntimeException');
+        $this->setExpectedException('RuntimeException', 'File not found');
         $pathFinder->findMocksPath();
     }
 }
- 
