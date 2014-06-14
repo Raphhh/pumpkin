@@ -1,6 +1,6 @@
 {
     "name": "raphhh/pumpkin",
-    "description": "A helper for PHPUnit",
+    "description": "A helper for mocks and database resources in PHPUnit",
     "minimum-stability": "stable",
     "type": "library",
     "keywords": ["pumpkin", "PHPUnit"],
