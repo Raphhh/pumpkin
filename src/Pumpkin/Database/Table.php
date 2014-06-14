@@ -76,20 +76,17 @@ class Table
      */
     public function toPhpUnitTable()
     {
-        $table = new TableConverter();
-        return $table->getPhpUnitTable(
-            $this->getFullName(),
-            $this->getDataPath()
-        );
+        $converterFactory = new TableConverterFactory();
+        return $converterFactory->build($this)->toPhpUnitTable();
     }
 
     /**
      * @return string
      */
-    private function getDataPath()
+    public function getDataPath()
     {
         $pathFinder = new PathFinder($this);
-        return $pathFinder->findDataPath(TableConverter::getSupportedFileExtensions());
+        return $pathFinder->findDataPath(TableConverterFactory::getSupportedFileExtensions());
     }
 
     /**
