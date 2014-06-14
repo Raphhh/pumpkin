@@ -18,22 +18,23 @@ class PathFinder extends TestHelper
     }
 
     /**
-     * @param string $fileSubPath
+     * @param string $filePatternPath
      * @param string[] $supportedExtensions
      * @throws \RuntimeException
      * @return string
      */
-    public function findPath($fileSubPath, array $supportedExtensions)
+    public function findPath($filePatternPath, array $supportedExtensions)
     {
+        $filePatternPath = DIRECTORY_SEPARATOR . $filePatternPath;
         $level = 0;
         while ($dirPath = realpath($this->resolveDirPathByLevel($level++))) {
-            $result = $this->findFilePath($dirPath . $fileSubPath, $supportedExtensions);
+            $result = $this->findFilePath($dirPath . $filePatternPath, $supportedExtensions);
             if ($result) {
                 return $result;
             }
         }
         throw new \RuntimeException(
-            sprintf('Not file found in "%s"', $this->resolveDirPathByLevel(0) . $fileSubPath . '.*')
+            sprintf('File not found for "%s"', $this->resolveDirPathByLevel(0) . $filePatternPath . '.*')
         );
     }
 
@@ -68,7 +69,7 @@ class PathFinder extends TestHelper
     private function findFilePath($filePath, array $supportedExtensions)
     {
         foreach ($supportedExtensions as $ext) {
-            $path = realpath($filePath . '.' . $ext);
+            $path = realpath($filePath . '.' . ltrim($ext, '.'));
             if ($path && is_readable($path)) {
                 return $path;
             }
