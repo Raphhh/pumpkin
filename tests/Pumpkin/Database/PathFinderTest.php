@@ -30,7 +30,7 @@ class PathFinderTest extends \PHPUnit_Framework_TestCase
     public function testFindDataPathWithoutFileFounded()
     {
         $pathFinder = new PathFinder($this->getTable('noTableName'));
-        $this->setExpectedException('\RuntimeException');
+        $this->setExpectedException('\RuntimeException', 'File not found');
         $pathFinder->findDataPath(array('csv'));
     }
 
