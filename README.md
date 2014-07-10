@@ -13,10 +13,8 @@ Pumpkin helps you to organize the storage of your mocks for PHPUnit. It gives mo
 
 You just have to add the Pumpkin package in your composer.json and update your project.
 
-```json
-"require": {
-    "raphhh/pumpkin": "*"
-}
+```
+$ php composer.phar require raphhh/pumpkin
 ```
 
 ## What can I do?
