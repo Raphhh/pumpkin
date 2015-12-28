@@ -2,6 +2,7 @@
 namespace Pumpkin\Database\resources;
 
 use Pumpkin\Database\TestCase;
+use Pumpkin\Database\Annotation as db;
 
 class Foo2 extends TestCase
 {
@@ -25,8 +26,8 @@ class Foo2 extends TestCase
     }
 
     /**
-     * @db dbName.tableName2
-     * @db dbName.tableName3
+     * @db("dbName.tableName2")
+     * @db("dbName.tableName3")
      */
     public function currentMethod()
     {

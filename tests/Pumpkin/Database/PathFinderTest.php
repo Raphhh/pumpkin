@@ -2,7 +2,6 @@
 namespace Pumpkin\Database;
 
 use Pumpkin\Test\Test;
-use TRex\Reflection\MethodReflection;
 
 /**
  * Class PathFinderTest
@@ -60,7 +59,7 @@ class PathFinderTest extends \PHPUnit_Framework_TestCase
      */
     private function getTest()
     {
-        return new Test(new MethodReflection(__CLASS__, __FUNCTION__));
+        return new Test(new \ReflectionMethod(__CLASS__, __FUNCTION__));
     }
 }
  

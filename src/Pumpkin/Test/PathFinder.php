@@ -14,7 +14,7 @@ class PathFinder extends TestHelper
      */
     public function getTestDirPath()
     {
-        return dirname($this->getTest()->getReflectedTestMethod()->getReflector()->getFileName());
+        return dirname($this->getTest()->getReflectedTestMethod()->getFileName());
     }
 
     /**

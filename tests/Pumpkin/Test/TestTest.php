@@ -1,7 +1,8 @@
 <?php
 namespace Pumpkin\Test;
 
-use TRex\Reflection\MethodReflection;
+use ReflectionMethod;
+use Pumpkin\Database\Annotation as db;
 
 /**
  * Class TestTest
@@ -13,12 +14,12 @@ class TestTest extends \PHPUnit_Framework_TestCase
     /**
      * Tests getTables.
      *
-     * @db dbName.tableName2
-     * @db dbName.tableName3
+     * @db("dbName.tableName2")
+     * @db("dbName.tableName3")
      */
     public function testGetTables()
     {
-        $test = new Test(new MethodReflection(__CLASS__, __FUNCTION__));
+        $test = new Test(new ReflectionMethod(__CLASS__, __FUNCTION__));
         $result = $test->getTables();
         $this->assertCount(2, $result);
         $this->assertSame('dbName.tableName2', $result['dbName.tableName2']->getFullName());
@@ -33,7 +34,7 @@ class TestTest extends \PHPUnit_Framework_TestCase
      */
     public function testGetMocks()
     {
-        $test = new Test(new MethodReflection(__CLASS__, __FUNCTION__));
+        $test = new Test(new ReflectionMethod(__CLASS__, __FUNCTION__));
         $result = $test->getMocks();
         $this->assertCount(2, $result);
         $this->assertInstanceOf('Foo\Class1', $result['Foo\Class1']);

@@ -16,14 +16,14 @@ class TestCaseTest extends TestCase
     {
         $result = $this->getTest();
         $this->assertSame(
-            __METHOD__,
-            $result->getReflectedTestMethod()->getName(true)
+            __FUNCTION__,
+            $result->getReflectedTestMethod()->getName()
         );
     }
 
     public function testGetMocks()
     {
-        $this->assertInstanceOf('\TRex\Core\Objects', $this->getMocks());
+        $this->assertTrue(is_array($this->getMocks()));
     }
 }
  

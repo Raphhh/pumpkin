@@ -2,6 +2,7 @@
 namespace Pumpkin\Mock;
 
 use Pumpkin\Test\TestHelper;
+use TRex\Parser\ClassName;
 
 /**
  * Class PathFinder
@@ -24,20 +25,11 @@ class PathFinder extends TestHelper
      */
     private function getFileSubPath()
     {
+        $className = new ClassName($this->getTest()->getReflectedTestMethod()->getDeclaringClass()->getName());
         return sprintf(
-            '/resources/mocks/%s/%s',
-            $this->extractClassName($this->getTest()->getReflectedTestMethod()->getClassReflection()->getName()),
-            $this->getTest()->getReflectedTestMethod()->getName(false)
+            '/resources/mocks/%s/%s', //todo fixtures
+            $className->getBaseName(),
+            $this->getTest()->getReflectedTestMethod()->getName()
         );
-    }
-
-    /**
-     * @param $fullName
-     * @return string
-     */
-    private function extractClassName($fullName)
-    {
-        $explodedNames = explode('\\', $fullName);
-        return (string)array_pop($explodedNames);
     }
 }

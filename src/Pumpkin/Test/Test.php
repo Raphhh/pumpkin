@@ -2,8 +2,9 @@
 namespace Pumpkin\Test;
 
 use Pumpkin\Database\Table;
+use Pumpkin\Database\TableBuilder;
 use Pumpkin\Mock\MockBuilder;
-use TRex\Reflection\MethodReflection;
+use ReflectionMethod;
 
 /**
  * Class Test
@@ -14,18 +15,17 @@ use TRex\Reflection\MethodReflection;
  */
 class Test
 {
-
     /**
-     * @var MethodReflection
+     * @var ReflectionMethod
      */
     private $reflectedTestMethod;
 
     /**
      * Constructor.
      *
-     * @param MethodReflection $reflectedTestMethod
+     * @param ReflectionMethod $reflectedTestMethod
      */
-    public function __construct(MethodReflection $reflectedTestMethod)
+    public function __construct(ReflectionMethod $reflectedTestMethod)
     {
         $this->setReflectedTestMethod($reflectedTestMethod);
     }
@@ -33,7 +33,7 @@ class Test
     /**
      * The reflected method of current test.
      *
-     * @return MethodReflection
+     * @return ReflectionMethod
      */
     public function getReflectedTestMethod()
     {
@@ -44,12 +44,12 @@ class Test
      * Returns the list of mock objects associated with the current test.
      *
      * @param array $constructorArgs
-     * @return \TRex\Core\Objects
+     * @return object[]
      */
     public function getMocks(array $constructorArgs = array())
     {
         $mockBuilder = new MockBuilder($this);
-        return $mockBuilder->getMocks($constructorArgs);
+        return $mockBuilder->getMocks($constructorArgs); //todo cache!
     }
 
     /**
@@ -59,27 +59,16 @@ class Test
      */
     public function getTables()
     {
-        $result = array();
-        foreach ($this->getReflectedTestMethod()->getAnnotations()->get('db') as $tableFullName) {
-            $result[$tableFullName] = $this->getTable($tableFullName);
-        }
-        return $result;
+        $tableBuilder = new TableBuilder($this);
+        return $tableBuilder->getTables(); //todo cache!
     }
 
-    /**
-     * @param string $tableFullName
-     * @return Table
-     */
-    private function getTable($tableFullName)
-    {
-        list($dataBaseName, $tableName) = explode('.', $tableFullName);
-        return new Table($this, $dataBaseName, $tableName);
-    }
+
 
     /**
-     * @param MethodReflection $reflectedTestMethod
+     * @param ReflectionMethod $reflectedTestMethod
      */
-    private function setReflectedTestMethod(MethodReflection $reflectedTestMethod)
+    private function setReflectedTestMethod(ReflectionMethod $reflectedTestMethod)
     {
         $this->reflectedTestMethod = $reflectedTestMethod;
     }

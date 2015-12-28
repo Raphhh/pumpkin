@@ -98,12 +98,13 @@ But you can also specify the tables you want to load for the current test. This 
 
 ```php
 // Test case
+use Pumpkin\Database\Annotation as db;
 
 class FooTest extends Pumpkin\database\TestCase{
 
     /**
-     * @db my_database.my_table
-     * @db my_other_database.my_other_table
+     * @db("my_database.my_table")
+     * @db("my_other_database.my_other_table")
      */
     function testA(){
        //my_database.my_table and my_other_database.my_other_table data will be load when this test will be executed

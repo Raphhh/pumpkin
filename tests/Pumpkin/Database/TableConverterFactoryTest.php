@@ -2,7 +2,7 @@
 namespace Pumpkin\Database;
 
 use Pumpkin\Test\Test;
-use TRex\Reflection\MethodReflection;
+use ReflectionMethod;
 
 /**
  * Class TableConverterFactoryTest
@@ -20,7 +20,7 @@ class TableConverterFactoryTest extends \PHPUnit_Framework_TestCase
 
     public function testBuildWithException()
     {
-        $table = new Table(new Test(new MethodReflection(__CLASS__, __FUNCTION__)), 'db', 'table');
+        $table = new Table(new Test(new ReflectionMethod(__CLASS__, __FUNCTION__)), 'db', 'table');
         $factory = new TableConverterFactory();
 
         $this->setExpectedException('\RunTimeException');
@@ -29,7 +29,7 @@ class TableConverterFactoryTest extends \PHPUnit_Framework_TestCase
 
     public function testBuild()
     {
-        $table = new Table(new Test(new MethodReflection(__CLASS__, __FUNCTION__)), 'dbName', 'tableName');
+        $table = new Table(new Test(new ReflectionMethod(__CLASS__, __FUNCTION__)), 'dbName', 'tableName');
         $factory = new TableConverterFactory();
 
         $this->assertInstanceOf('Pumpkin\Database\ITableConverter', $factory->build($table));

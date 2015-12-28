@@ -40,8 +40,8 @@ class TestCaseTest extends \PHPUnit_Framework_TestCase
         $foo = new Foo1();
         $result = $foo->getTest();
         $this->assertSame(
-            'Pumpkin\Database\resources\Foo1::currentMethod',
-            $result->getReflectedTestMethod()->getName(true)
+            'currentMethod',
+            $result->getReflectedTestMethod()->getName()
         );
     }
 
@@ -71,6 +71,6 @@ class TestCaseTest extends \PHPUnit_Framework_TestCase
     public function testGetMocks()
     {
         $foo1 = new Foo1();
-        $this->assertInstanceOf('\TRex\Core\Objects', $foo1->getMocks());
+        $this->assertTrue(is_array($foo1->getMocks()));
     }
 }

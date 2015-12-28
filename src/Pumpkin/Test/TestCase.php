@@ -1,8 +1,6 @@
 <?php
 namespace Pumpkin\Test;
 
-use TRex\Reflection\MethodReflection;
-
 /**
  * Class TestCase
  * @package Pumpkin\Test
@@ -25,14 +23,14 @@ trait TestCase
      */
     protected function getTest()
     {
-        return new Test(new MethodReflection($this, $this->getName(false)));
+        return new Test(new \ReflectionMethod($this, $this->getName(false)));
     }
 
     /**
      * Returns the mocks associated with the current test.
      *
      * @param array $constructorArgs
-     * @return \TRex\Core\Objects
+     * @return object[]
      */
     protected function getMocks(array $constructorArgs = array())
     {

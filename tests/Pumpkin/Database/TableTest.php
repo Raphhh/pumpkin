@@ -2,7 +2,7 @@
 namespace Pumpkin\Database;
 
 use Pumpkin\Test\Test;
-use TRex\Reflection\MethodReflection;
+use ReflectionMethod;
 
 /**
  * Class TableTest
@@ -36,7 +36,7 @@ class TableTest extends \PHPUnit_Framework_TestCase
      */
     public function testToPhpUnitTable()
     {
-        $table = new Table(new Test(new MethodReflection(__CLASS__, __FUNCTION__)), 'dbName', 'tableName');
+        $table = new Table(new Test(new ReflectionMethod(__CLASS__, __FUNCTION__)), 'dbName', 'tableName');
         $result = $table->toPhpUnitTable();
         $this->assertInstanceOf('PHPUnit_Extensions_Database_DataSet_ITable', $result);
         $this->assertSame('dbName.tableName', $result->getTableMetaData()->getTableName());
