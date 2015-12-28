@@ -6,7 +6,7 @@ namespace Pumpkin\Test;
  * @package Pumpkin\Test
  * @author Raphaël Lefebvre <raphael@raphaellefebvre.be>
  */
-trait TestCase
+trait TestCaseTrait
 {
     /**
      * Returns the name of the current test method.

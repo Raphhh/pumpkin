@@ -1,7 +1,7 @@
 <?php
 namespace Pumpkin\Database;
 
-use Pumpkin\Test\TestCase as TestTrait;
+use Pumpkin\Test\TestCaseTrait;
 
 /**
  * Class TestCase
@@ -11,7 +11,7 @@ use Pumpkin\Test\TestCase as TestTrait;
 abstract class TestCase extends \PHPUnit_Extensions_Database_TestCase
 {
 
-    use TestTrait;
+    use TestCaseTrait;
 
     /**
      * main db connection.

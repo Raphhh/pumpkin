@@ -1,7 +1,7 @@
 <?php
 namespace Pumpkin;
 
-use Pumpkin\Test\TestCase as TestTrait;
+use Pumpkin\Test\TestCaseTrait;
 
 /**
  * Class TestCase
@@ -12,6 +12,6 @@ use Pumpkin\Test\TestCase as TestTrait;
  */
 abstract class TestCase extends \PHPUnit_Framework_TestCase
 {
-    use TestTrait;
+    use TestCaseTrait;
 }
  
