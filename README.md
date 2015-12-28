@@ -22,11 +22,11 @@ $ composer require raphhh/pumpkin
 
 ### Get the current test
 
-Usually, when you use PHPUnit, you create a new test class extending \PHPUnit_Framework_TestCase. Instead, with Pumkin, you have to extend \Pumpkin\TestCase.
+Usually, when you use PHPUnit, you create a new test class extending `\PHPUnit_Framework_TestCase`. Instead, with Pumpkin, you have to extend `\Pumpkin\TestCase`.
 
-\Pumpkin\TestCase extends \PHPUnit_Framework_TestCase, so you have the same interface as if you use PHPUnit.
+`\Pumpkin\TestCase` extends `\PHPUnit_Framework_TestCase`, so you have the same interface as if you use PHPUnit.
 
-But you can also know the current test with \Pumpkin\TestCase::getTest(). You receive a \Pumpkin\Test\Test object which reflects the current method of the test.
+But you can also know the current test with `\Pumpkin\TestCase::getTest(`). You receive a `\Pumpkin\Test\Test` object which reflects the current method of the test.
 
 The current test is the method executed by PHPUnit and containing your assertions. Typically, this is a test* method.
 
@@ -47,6 +47,8 @@ class FooTest extends Pumpkin\TestCase
 ```
 
 With this method you can reflected the method of the executed test, retrieve annotations, ... anything!
+
+Note that if you do not want to extend `\Pumpkin\TestCase`, you can also use a trait `\Pumpkin\Test\TestCaseTrait`.
 
 
 ### Get mocks of the current test
@@ -94,9 +96,9 @@ class FooTest extends Pumpkin\TestCase
 
 ### Reset the database with specific data for the current test
 
-When you want to mock databases with PHPUnit, you need to use \PHPUnit_Extensions_Database_TestCase. Instead, with Pumpkin, you have to extend \Pumpkin\Database\TestCase.
+When you want to mock databases with PHPUnit, you need to use `\PHPUnit_Extensions_Database_TestCase`. Instead, with Pumpkin, you have to extend `\Pumpkin\Database\TestCase`.
 
-\Pumpkin\Database\TestCase extends \PHPUnit_Extensions_Database_TestCase, so you have the same interface as if you use PHPUnit.
+\Pumpkin\Database\TestCase extends `\PHPUnit_Extensions_Database_TestCase`, so you have the same interface as if you use PHPUnit.
 
 #### The annotations
 
@@ -134,7 +136,7 @@ Your data can be specific for the current test, or be common with several tests.
 
 #### The database config
 
-If you want to load your mocked data, you have to allow PHPUnit to access to your database. With Pumkin you have just to specify your config in the phpunit.xml.
+If you want to load your mocked data, you have to allow PHPUnit to access to your database. With Pumpkin you have just to specify your config in the phpunit.xml.
 
 For example
 
