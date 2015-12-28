@@ -15,7 +15,7 @@ Pumpkin helps you to organize the storage of your mocks for PHPUnit. It gives mo
 You just have to add the Pumpkin package in your composer.json and update your project.
 
 ```
-$ php composer.phar require raphhh/pumpkin
+$ composer require raphhh/pumpkin
 ```
 
 ## What can I do?
@@ -33,7 +33,8 @@ The current test is the method executed by PHPUnit and containing your assertion
 For example
 
 ```php
-class FooTest extends Pumpkin\TestCase{
+class FooTest extends Pumpkin\TestCase
+{
 
     function testA(){
         $this->getTest()->getReflectedTestMethod()->getName(); //FooTest::testA
@@ -54,7 +55,7 @@ You can retrieve mocks of a the current test. Mocks objects must be user objects
 
 The file is located in the following path:
 ```
-/resources/mocks/{ClassTestName}/{methodName}.php
+/fixtures/mocks/{ClassTestName}/{methodName}.php
 ```
 
 This path can start from the test directory or from a parent one.
@@ -63,12 +64,24 @@ You can declare as many mocks as you want in this file.
 
 
 
-For example
+For example:
+
+
+
+```php
+//Mocks
+// /fixtures/mocks/FooTest/testA.php
+
+class Mock1{}
+
+class mock2{}
+```
 
 ```php
 // Test case
 
-class FooTest extends Pumpkin\TestCase{
+class FooTest extends Pumpkin\TestCase
+{
 
     function testA(){
         $this->getMocks(); //returns [Mock1, Mock2]
@@ -77,18 +90,11 @@ class FooTest extends Pumpkin\TestCase{
 }
 ```
 
-```php
-// /resources/mocks/FooTest/testA.php
-
-class Mock1{}
-
-class mock2{}
-```
 
 
 ### Reset the database with specific data for the current test
 
-When you want to mock databases with PHPUnit, you need to use \PHPUnit_Extensions_Database_TestCase. Instead, with Pumkin, you have to extend \Pumpkin\Database\TestCase.
+When you want to mock databases with PHPUnit, you need to use \PHPUnit_Extensions_Database_TestCase. Instead, with Pumpkin, you have to extend \Pumpkin\Database\TestCase.
 
 \Pumpkin\Database\TestCase extends \PHPUnit_Extensions_Database_TestCase, so you have the same interface as if you use PHPUnit.
 
@@ -100,7 +106,8 @@ But you can also specify the tables you want to load for the current test. This 
 // Test case
 use Pumpkin\Database\Annotation as db;
 
-class FooTest extends Pumpkin\database\TestCase{
+class FooTest extends Pumpkin\Database\TestCase
+{
 
     /**
      * @db("my_database.my_table")
@@ -117,7 +124,7 @@ class FooTest extends Pumpkin\database\TestCase{
 
 The data are stored in a file with the following path:
 ```
-/resources/databases/{databaseName}/data/{tableName}.csv
+/fixtures/databases/{databaseName}/data/{tableName}.csv
 ```
 
 Currently, Pumpkin support only csv files, but it can be evolved in future.
