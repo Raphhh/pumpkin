@@ -17,7 +17,7 @@ class PathFinderTest extends \PHPUnit_Framework_TestCase
      */
     public function testFindMocksPathWithFileFounded()
     {
-        $realPath = realpath(__DIR__ . '/resources/mocks/PathFinderTest');
+        $realPath = realpath(__DIR__ . '/fixtures/mocks/PathFinderTest');
         $this->assertNotSame(false, $realPath);
 
         $pathFinder = new PathFinder(new Test(new ReflectionMethod(__CLASS__, __FUNCTION__)));

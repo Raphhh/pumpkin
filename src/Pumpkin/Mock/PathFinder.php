@@ -27,7 +27,7 @@ class PathFinder extends TestHelper
     {
         $className = new ClassName($this->getTest()->getReflectedTestMethod()->getDeclaringClass()->getName());
         return sprintf(
-            '/resources/mocks/%s/%s', //todo fixtures
+            '/fixtures/mocks/%s/%s',
             $className->getBaseName(),
             $this->getTest()->getReflectedTestMethod()->getName()
         );

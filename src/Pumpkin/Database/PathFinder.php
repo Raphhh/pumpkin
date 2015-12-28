@@ -44,7 +44,7 @@ class PathFinder
     private function getFileSubPath()
     {
         return sprintf(
-            '/resources/databases/%s/data/%s',
+            '/fixtures/databases/%s/data/%s',
             $this->getTable()->getDataBaseName(),
             $this->getTable()->getName()
         );

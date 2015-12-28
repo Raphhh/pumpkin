@@ -16,7 +16,7 @@ class PathFinderTest extends \PHPUnit_Framework_TestCase
      */
     public function testFindDataPathWithFileFounded()
     {
-        $realPath = realpath(__DIR__ . '/resources/databases/dbName/data/tableName.csv');
+        $realPath = realpath(__DIR__ . '/fixtures/databases/dbName/data/tableName.csv');
         $this->assertNotSame(false, $realPath);
 
         $pathFinder = new PathFinder($this->getTable('tableName'));
@@ -38,7 +38,7 @@ class PathFinderTest extends \PHPUnit_Framework_TestCase
      */
     public function testFindDataPathWithFileFoundedForTheParent()
     {
-        $realPath = realpath(__DIR__ . '/../resources/databases/dbName/data/tableName2.csv');
+        $realPath = realpath(__DIR__ . '/../fixtures/databases/dbName/data/tableName2.csv');
         $this->assertNotSame(false, $realPath);
 
         $pathFinder = new PathFinder($this->getTable('tableName2'));
