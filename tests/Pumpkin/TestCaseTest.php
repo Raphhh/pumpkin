@@ -1,6 +1,8 @@
 <?php
 namespace Pumpkin;
 
+use Pumpkin\Database\Annotation as db;
+
 /**
  * Class TestCaseTest
  * @package Pumpkin
@@ -24,6 +26,8 @@ class TestCaseTest extends TestCase
     public function testGetMocks()
     {
         $this->assertTrue(is_array($this->getMocks()));
+        $this->assertArrayHasKey('Foo\Class5', $this->getMocks());
+        $this->assertArrayHasKey('Foo\Class6', $this->getMocks());
     }
 }
  
