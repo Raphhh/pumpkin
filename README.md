@@ -48,7 +48,7 @@ class FooTest extends Pumpkin\TestCase
 
 With this method you can reflected the method of the executed test, retrieve annotations, ... anything!
 
-Note that if you do not want to extend `\Pumpkin\TestCase`, you can also use a trait `\Pumpkin\Test\TestCaseTrait`.
+Note that if you do not want to extend `\Pumpkin\TestCase`, you can also directly extend `\PHPUnit_Framework_TestCase` and use the trait `\Pumpkin\Test\TestCaseTrait`.
 
 
 ### Get mocks of the current test
@@ -99,6 +99,8 @@ class FooTest extends Pumpkin\TestCase
 When you want to mock databases with PHPUnit, you need to use `\PHPUnit_Extensions_Database_TestCase`. Instead, with Pumpkin, you have to extend `\Pumpkin\Database\TestCase`.
 
 \Pumpkin\Database\TestCase extends `\PHPUnit_Extensions_Database_TestCase`, so you have the same interface as if you use PHPUnit.
+
+Note that if you do not want to extend `\Pumpkin\Database\TestCase`, you can also directly extend `\PHPUnit_Extensions_Database_TestCase` and use the trait `\Pumpkin\Test\Database\TestCaseTrait`.
 
 #### The annotations
 
