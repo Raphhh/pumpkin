@@ -21,6 +21,16 @@ class Test
     private $reflectedTestMethod;
 
     /**
+     * @var object[]
+     */
+    private $mocks;
+
+    /**
+     * @var Table[]
+     */
+    private $tables;
+
+    /**
      * Constructor.
      *
      * @param ReflectionMethod $reflectedTestMethod
@@ -48,8 +58,11 @@ class Test
      */
     public function getMocks(array $constructorArgs = array())
     {
-        $mockBuilder = new MockBuilder($this);
-        return $mockBuilder->getMocks($constructorArgs); //todo cache!
+        if ($this->mocks === null) {
+            $mockBuilder = new MockBuilder($this);
+            $this->mocks = $mockBuilder->getMocks($constructorArgs);
+        }
+        return $this->mocks;
     }
 
     /**
@@ -59,11 +72,12 @@ class Test
      */
     public function getTables()
     {
-        $tableBuilder = new TableBuilder($this);
-        return $tableBuilder->getTables(); //todo cache!
+        if ($this->tables === null) {
+            $tableBuilder = new TableBuilder($this);
+            $this->tables = $tableBuilder->getTables();
+        }
+        return $this->tables;
     }
-
-
 
     /**
      * @param ReflectionMethod $reflectedTestMethod
